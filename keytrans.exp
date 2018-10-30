@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+#执行格式expect keytrans.exp hostname username password
+#拷贝/root/.ssh/id_rsa.pub到slave服务器
+set timeout 3
+set hostname [lindex $argv 0]
+set username [lindex $argv 1]
+set password [lindex $argv 2]
+spawn ssh-copy-id -o StrictHostKeyChecking=no -i /root/.ssh/id_rsa.pub $username@$hostname
+expect "Password:"
+send "${password}\r"
+interact
