@@ -1,0 +1,6 @@
+jq
+---------------------------
+ chmod +x jq
+ cp jq /usr/bin
+
+id=$(cat xxx.json | ${JQ_EXEC} .menu.id | sed 's/\"//g')
